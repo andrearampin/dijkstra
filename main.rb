@@ -36,4 +36,9 @@ g.add_edge(node6, node8, 6)
 
 g.add_edge(node7, node8, 7)
 
+puts 'Gragh Structure (lw = Link weight)'
 puts g.to_s
+
+puts "\n"
+puts 'Dijksta Path Structure'
+puts g.dijkstra.join("\n")

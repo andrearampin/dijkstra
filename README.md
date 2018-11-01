@@ -26,10 +26,6 @@ Test built using the following Graph
 
 ![](https://www.geeksforgeeks.org/wp-content/uploads/Fig-11.jpg)
 
-and result is
-
-![](https://www.geeksforgeeks.org/wp-content/uploads/DIJ5.jpg)
-
 In order to execute the algorithm
 
 ```
@@ -60,3 +56,7 @@ Dijksta Path Structure
 2 ==> 3
 5 ==> 4
 ```
+
+the representation of the output is
+
+![](https://www.geeksforgeeks.org/wp-content/uploads/DIJ5.jpg)

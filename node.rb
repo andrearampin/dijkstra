@@ -1,3 +1,7 @@
+# frozen_string_literal: true
+
+# Node
+# Element of a Graph: https://en.wikipedia.org/wiki/Graph_(abstract_data_type)
 class Node
   attr_reader :value, :adjacent_nodes
 

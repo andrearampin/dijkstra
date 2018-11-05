@@ -1,10 +1,15 @@
-class Graph
+# frozen_string_literal: true
 
+# Graph
+# https://en.wikipedia.org/wiki/Graph_(abstract_data_type)
+class Graph
   # Intialise the graph.
   # @return [Gragh]
   def initialize
     @nodes = {}
-    @path, @pool, @values_in_path = [], [], []
+    @path = []
+    @pool = []
+    @values_in_path = []
   end
 
   # Add a new node to the graph.
@@ -28,12 +33,12 @@ class Graph
   # Convert the graph to a readable format.
   # @return [String]
   def to_s
-    nodes.map do |key, node|
+    nodes.map do |_key, node|
       node.to_s
     end.join("\n")
   end
 
-  # Execute Dijkstra’s shortest path algorithm.
+  # Execute Dijkstra's shortest path algorithm.
   # @return [Array]
   def dijkstra
     # Intialise the algorithom if first run
@@ -56,9 +61,11 @@ class Graph
 
     # Pick the next untouched node by shifting the nodes in the pool starting
     # from the smallest to the greatest.
-    begin
+    next_node = nil
+    loop do
       next_node = pool.shift
-    end while values_in_path.include?(next_node[:node].value)
+      break unless values_in_path.include?(next_node[:node].value)
+    end
 
     # Push the next step (from -> to) in the path
     @path << "#{next_node[:from].value} ==> #{next_node[:node].value}"
@@ -75,24 +82,24 @@ class Graph
 
   private
 
-    attr_accessor :nodes, :path, :pool, :current_node, :values_in_path
+  attr_accessor :nodes, :path, :pool, :current_node, :values_in_path
 
-    # Verify if all the nodes have been "touched" and there is a path between
-    # them.
-    # @return [Boolean]
-    def completed_path?
-      path.size == nodes.size - 1
-    end
+  # Verify if all the nodes have been "touched" and there is a path between
+  # them.
+  # @return [Boolean]
+  def completed_path?
+    path.size == nodes.size - 1
+  end
 
-    # Verify if the Dijkstra’s is empty.
-    # @return [Boolean]
-    def empty_path?
-      path.empty?
-    end
+  # Verify if the Dijkstra's is empty.
+  # @return [Boolean]
+  def empty_path?
+    path.empty?
+  end
 
-    # initialize the Dijkstra’s algorithm.
-    def init_dijkstra
-      key, node = nodes.first
-      @current_node = { node: node, weight: 0, from: node }
-    end
+  # initialize the Dijkstra's algorithm.
+  def init_dijkstra
+    _key, node = nodes.first
+    @current_node = { node: node, weight: 0, from: node }
+  end
 end
